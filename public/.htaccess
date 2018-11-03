@@ -15,7 +15,7 @@
     RewriteRule ^ index.php [L]
 
     # Handle Authorization Header
-    RewriteCond %{HTTPS:Authorization} .
+    RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTPS:Authorization}]
 
 
