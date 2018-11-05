@@ -1,14 +1,19 @@
 
-<IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews
-    </IfModule>
-
-     
-     RewriteEngine On
+RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+     
+
+<IfModule mod_rewrite.c>
+
+<IfModule mod_negotiation.c>
+
+Options -MultiViews
+
+</IfModule>
+
+     
      
      
     # Redirect Trailing Slashes If Not A Folder...
@@ -26,7 +31,3 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 
 
-DirectorySlash Off
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^(.+[^/])$          %{HTTP:X-Forwarded-Proto}://%{HTTP_HOST}/$1/  [R=301,L,QSA]
