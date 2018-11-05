@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\CompanyProfile;
 use App\Service;
-use Illuminate\Support\Facades\URL;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -17,8 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(500);
-$this->app['request']->server->set('HTTPS', true);
-URL::forceScheme('https');
+
 
         if (Schema::hasTable('company_profiles')) {
 
