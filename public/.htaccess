@@ -3,6 +3,16 @@
         Options -MultiViews
     </IfModule>
 
+
+LoadModule rewrite_module modules/mod_rewrite.so
+
+
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+
     RewriteEngine On
 
     # Redirect Trailing Slashes If Not A Folder...
